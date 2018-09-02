@@ -1,0 +1,14 @@
+{
+  "name": "fdeps",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:LLGZONE/fdeps.git",
+  "author": "llg <985395976@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/types": "^7.0.0",
+    "@babel/traverse": "^7.0.0",
+    "@babel/parser": "^7.0.0"
+  }
+}
