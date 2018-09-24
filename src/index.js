@@ -15,13 +15,13 @@ class Dep {
 
 // opts: depth, exclude, include
 function fdeps(
-  file,
+  files,
   opts = {
     include: [],
     exclude: []
   }
 ) {
-  const dep = new Dep({ path: file });
+  const dep = new Dep({ path: files });
   const depth = opts.depth;
   const depthNoLimit = typeof opts.depth === 'number' ? false : true;
   walk(dep, depth, depthNoLimit);
@@ -43,15 +43,15 @@ function walk(dep, depth, depthNoLimit) {
           relativePath,
           depth: dep.depth + 1
         });
-        if (subDep.depth <= depth || depthNoLimit) {
-          dep.deps.push(subDep);
-        }
+        dep.deps.push(subDep);
       }
     }
   });
 
   dep.deps.forEach(subDep => {
-    walk(subDep, depth, depthNoLimit);
+    if (subDep.depth <= depth || depthNoLimit) {
+      walk(subDep, depth, depthNoLimit);
+    }
   });
 }
 
